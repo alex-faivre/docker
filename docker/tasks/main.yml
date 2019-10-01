@@ -2,5 +2,5 @@
 # tasks file for docker
 
 - name: Include tasks from "{{ ansible_distribution }}"
-  include_tasks: "{{ ansible_distribution }}.yml"
+  include_tasks: "{{ ansible_distribution | lower }}.yml"
   when: ansible_distribution is defined
