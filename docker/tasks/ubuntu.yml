@@ -5,11 +5,11 @@
   apt:
     name: "{{ item }}"
     state: latest
-    loop:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
 
 - name: Deploy Docker's apt-key
   apt_key:
