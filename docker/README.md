@@ -20,7 +20,8 @@ Select action this list :
   - 'start'
   - 'stop'
   - 'remove'
-  - 'add_to_boot'
+  - 'enable_at_boot'
+  - 'disable_at_boot'
 
 Dependencies
 ------------
@@ -36,7 +37,7 @@ For launch this role :
       roles:
          - { role: docker , action: install }
          - { role: docker , action: start }
-         - { role: docker , action: add_to_boot }
+         - { role: docker , action: enable_at_boot }
 
 License
 -------
