@@ -9,16 +9,17 @@
 - name: fail because OS isn't support by this role
   fail:
     msg: "Hello, your operating system is not support for now. Please refer to the documentation."
-  when: not os_support
+  when: not os_support.stat.exists
 
 - name: Check if action exist
   stat:
     path: "{{ ansible_distribution | lower }}/{{ action }}.yml"
-  register: action_exist
+  register: router_action
+
+- name: fail because action does not exist
+  fail:
+    msg: "Hello, the action you defined does not exist. Please refer to the documentation."
+  when: not router_action.stat.exists
 
 - name: Include tasks from "{{ ansible_distribution }}"
   include_tasks: "{{ ansible_distribution | lower }}/{{ action }}.yml"
-  when:
-    - ansible_distribution is defined
-    - os_support.stat.isdir is defined
-    - os_support.stat.isdir
