@@ -3,23 +3,30 @@
 
 - name: Check if OS is support
   stat:
-    path: "{{ role_path }}/tasks/{{ ansible_distribution | lower }}"
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}"
   register: os_support
 
-- name: Fail because OS isn't support by this role
+- name: Fail because OS "{{ ansible_distribution }}" isn't support by this role
   fail:
     msg: "Hello, your operating system is not support for now. Please refer to the documentation."
   when: not os_support.stat.exists
 
-- name: Check if action exist
-  stat:
-    path: "{{ role_path }}/tasks/{{ ansible_distribution | lower }}/{{ action }}.yml"
-  register: router_action
-
-- name: Fail because action does not exist
-  fail:
-    msg: "Hello, the action you defined does not exist. Please refer to the documentation."
-  when: not router_action.stat.exists
-
 - name: Include tasks from "{{ ansible_distribution }}"
-  include_tasks: "{{ ansible_distribution | lower }}/{{ action }}.yml"
+  include_tasks: "{{ ansible_distribution }}/{{ action }}.yml"
+  when:
+    - action is defined
+    - action in file_to_include
+
+- name: Change service status to "{{ state }}"
+  service:
+    name: docker
+    state: "{{ state }}"
+  when:
+    - action is defined
+    - action in actions_service
+
+- name: Change enable status on boot at "{{ enable }}"
+  service:
+    name: docker
+    enable: "{{ enable }}"
+  when: enable is defined

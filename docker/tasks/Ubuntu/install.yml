@@ -5,6 +5,7 @@
   apt:
     name: "{{ item }}"
     state: latest
+    force_apt_get: yes
   loop:
     - apt-transport-https
     - ca-certificates
@@ -26,8 +27,10 @@
   apt:
     update_cache: yes
     cache_valid_time: 3600
+    force_apt_get: yes
 
 - name: Install docker-ce
   apt:
     name: docker-ce
     state: latest
+    force_apt_get: yes

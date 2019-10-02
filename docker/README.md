@@ -10,19 +10,32 @@ Nothing required
 
 Role Variables
 --------------
-vars:
 
-  - { var: action , type: string }
+All actions for docker service :
 
-Select action this list :
-  - 'install'
-  - 'update'
-  - 'start'
-  - 'stop'
-  - 'remove'
-  - 'enable_at_boot'
-  - 'disable_at_boot'
+  <code>action: type string | default("install")</code>
+  
+    - install
+    - remove
+    - update
+---
 
+All states for docker service :
+
+  <code>state: type string | default("started")</code>
+  
+    - started
+    - stopped
+    - reloaded 
+
+---
+Enable state for docker at boot 
+
+  <code>action: type boolean | default("yes")</code>
+  
+    - yes
+    - no
+          
 Dependencies
 ------------
 
@@ -35,9 +48,8 @@ For launch this role :
 
     - hosts: all
       roles:
-         - { role: docker , action: install }
-         - { role: docker , action: start }
-         - { role: docker , action: enable_at_boot }
+         # This call will install, start and enable docker at boot
+         - { role: docker }
 
 License
 -------
