@@ -16,7 +16,7 @@
 
 - name: Add docker repository
   apt_repository:
-    repo: "{{ repo.url }} {{ repo.release }} stable"
+    repo: "{{ repo.url }} {{ repo.release }} {{ repo.status }}"
     state: present
 
 - name: Update APT cache && Upgrade APT to the latest packages

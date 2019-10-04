@@ -10,4 +10,5 @@ gpg_key:
 
 repo:
   url: "deb [arch=amd64] https://download.docker.com/linux/ubuntu"
-  release: "{{ ansible_distribution_release }}
+  release: "{{ ansible_distribution_release }}"
+  status: "stable"
