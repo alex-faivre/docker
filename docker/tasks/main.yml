@@ -28,5 +28,5 @@
 - name: Change enable status on boot at "{{ enable }}"
   service:
     name: docker
-    enable: "{{ enable }}"
+    enable: "{{ enable | bool }}"
   when: enable is defined
