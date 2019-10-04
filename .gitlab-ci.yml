@@ -1,0 +1,10 @@
+before_script:
+  - ansible-lint --version
+
+stages:
+  - ansible-lint
+
+ansible-lint:
+  stage: ansible-lint
+  script:
+    - ansible-lint docker/tasks/main.yml
