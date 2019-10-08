@@ -27,7 +27,6 @@ All states for docker service :
     - started
     - stopped
     - reloaded 
-
 ---
 Enable state for docker at boot 
 
