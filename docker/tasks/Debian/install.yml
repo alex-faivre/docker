@@ -30,8 +30,7 @@
 
 - name: debug docker_requirements_packages
   debug:
-    msg:
-      var: "{{ docker_requirements_packages }}"
+    msg: "{{ docker_requirements_packages }}"
 
 - name: Install Docker
   apt:
