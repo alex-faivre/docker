@@ -2,15 +2,19 @@ packages:
   - apt-transport-https
   - ca-certificates
   - curl
+  - gnupg2
   - software-properties-common
 
 docker_requirements_packages:
   - docker-ce
+  - docker-ce-cli
+  - containerd.io
 
 gpg_key:
   id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-  url: https://download.docker.com/linux/ubuntu/gpg
+  url: https://download.docker.com/linux/debian/gpg
 
 repo:
-  url: "deb [arch=amd64] https://download.docker.com/linux/ubuntu"
+  url: "deb [arch=amd64] https://download.docker.com/linux/debian"
+  release: "{{ ansible_distribution_release }}"
   status: "stable"

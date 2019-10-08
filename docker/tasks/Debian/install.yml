@@ -1,5 +1,5 @@
 ---
-# tasks file for install docker on ubuntu servers
+# tasks file for install docker on debian servers
 
 - name: Install some packages
   apt:
@@ -28,9 +28,9 @@
     cache_valid_time: 3600
     force_apt_get: yes
 
-- name: Install docker-ce
+- name: Install Docker
   apt:
-    name: docker-ce
+    name: "{{ item }}"
     state: latest
     force_apt_get: yes
   loop: "{{ docker_requirements_packages }}"
