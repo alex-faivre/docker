@@ -28,13 +28,9 @@
     cache_valid_time: 3600
     force_apt_get: yes
 
-- name: debug docker_requirements_packages
-  debug:
-    msg: "{{ docker_requirements_packages }}"
-
 - name: Install Docker
   apt:
     name: "{{ item }}"
     state: latest
     force_apt_get: yes
-  loop: "{{ docker_requirements_packages }}"
+  loop: "{{ docker_packages }}"

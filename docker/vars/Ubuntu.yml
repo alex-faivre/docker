@@ -4,7 +4,7 @@ packages:
   - curl
   - software-properties-common
 
-docker_requirements_packages:
+docker_packages:
   - docker-ce
 
 gpg_key:

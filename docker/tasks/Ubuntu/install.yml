@@ -30,7 +30,7 @@
 
 - name: Install docker-ce
   apt:
-    name: docker-ce
+    name: "{{ item }}"
     state: latest
     force_apt_get: yes
-  loop: "{{ docker_requirements_packages }}"
+  loop: "{{ docker_packages }}"

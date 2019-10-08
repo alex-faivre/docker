@@ -5,7 +5,7 @@ packages:
   - gnupg2
   - software-properties-common
 
-docker_requirements_packages:
+docker_packages:
   - docker-ce
   - docker-ce-cli
   - containerd.io
