@@ -11,8 +11,8 @@
     msg: "Hello, your operating system is not support for now. Please refer to the documentation."
   when: not os_support.stat.exists
 
-- name: Include tasks from "{{ ansible_distribution }}"
-  include_tasks: "{{ ansible_distribution }}/{{ action }}.yml"
+- name: Import tasks from "{{ ansible_distribution }}"
+  import_tasks: "{{ ansible_distribution }}/{{ action }}.yml"
   when:
     - action is defined
     - action in file_to_include
