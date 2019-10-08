@@ -17,7 +17,7 @@
     - action is defined
     - action in file_to_include
 
-- name: Change service status to "{{ state }}"
+- name: Change Docker service status to "{{ state }}"
   service:
     name: docker
     state: "{{ state }}"
@@ -28,5 +28,6 @@
 - name: Change enable status on boot at "{{ enable }}"
   service:
     name: docker
-    enable: "{{ enable | bool }}"
+    enabled: "{{ enable | bool }}"
+    state: started
   when: enable is defined

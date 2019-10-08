@@ -1,5 +1,5 @@
 ---
-# tasks file for docker on ubuntu servers
+# tasks file for install docker on ubuntu servers
 
 - name: Install some packages
   apt:
@@ -7,17 +7,20 @@
     state: latest
     force_apt_get: yes
   loop: "{{ packages }}"
+  when: packages is defined
 
 - name: Deploy Docker's apt-key GPG
   apt_key:
     id:  "{{ apt_gpg_key.id  }}"
     url: "{{ apt_gpg_key.url }}"
     state: present
+  when: gpg_key is defined
 
 - name: Add docker repository
   apt_repository:
     repo: "{{ repo.url }} {{ repo.release }} {{ repo.status }}"
     state: present
+  when: repo is defined
 
 - name: Update APT cache && Upgrade APT to the latest packages
   apt:

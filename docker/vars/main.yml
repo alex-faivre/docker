@@ -1,5 +1,5 @@
 ---
 # vars file for docker
 
-file_to_include: [ "install" , "remove" , "update"]
+file_to_include: [ "install" , "remove"  , "update" ]
 actions_service: [ "started" , "stopped" , "reloaded" ]
