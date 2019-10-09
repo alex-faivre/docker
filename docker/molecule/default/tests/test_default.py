@@ -1,4 +1,5 @@
 import os
+import pytest
 
 import testinfra.utils.ansible_runner
 
@@ -13,6 +14,7 @@ def test_hosts_file(host):
     assert f.user == 'root'
     assert f.group == 'root'
 
+
 @pytest.mark.parametrize('pkg', [
   'docker-ce',
   'apt-transport-https',
@@ -24,6 +26,7 @@ def test_pkg(host, pkg):
     package = host.package(pkg)
 
     assert package.is_installed
+
 
 @pytest.mark.parametrize('svc', [
   'docker'
