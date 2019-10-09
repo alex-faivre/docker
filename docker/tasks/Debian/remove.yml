@@ -11,4 +11,5 @@
   apt:
     name: docker
     state: absent
+    force_apt_get: yes
     purge: yes

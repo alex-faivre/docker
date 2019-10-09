@@ -10,5 +10,6 @@
 - name: Remove Docker package
   apt:
     name: docker
+    force_apt_get: yes
     state: absent
     purge: yes
