@@ -46,4 +46,4 @@
     name: "{{ user_docker }}"
     groups: docker
     append: yes
-    when: user_docker is defined
+  when: user_docker is defined
