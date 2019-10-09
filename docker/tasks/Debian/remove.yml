@@ -10,8 +10,8 @@
 - name: Remove Docker package
   apt:
     name: docker
-    force_apt_get: yes
     state: absent
+    force_apt_get: yes
     purge: yes
 
 - name: Change enable status on boot at False
