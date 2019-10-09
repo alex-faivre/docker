@@ -11,8 +11,8 @@
 
 - name: Deploy Docker's apt-key GPG
   apt_key:
-    id:  "{{ apt_gpg_key.id  }}"
-    url: "{{ apt_gpg_key.url }}"
+    id:  "{{ gpg_key.id  }}"
+    url: "{{ gpg_key.url }}"
     state: present
   when: gpg_key is defined
 
