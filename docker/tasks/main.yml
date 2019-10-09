@@ -22,7 +22,7 @@
   when:
     - action is defined
     - action in file_to_include
-    -
+
 - name: Change Docker service status to "{{ state }}"
   service:
     name: docker
