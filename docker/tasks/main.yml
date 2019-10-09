@@ -17,6 +17,12 @@
     - action is defined
     - action in file_to_include
 
+- name: Include vars from "{{ ansible_distribution }}"
+  include_vars: "{{ ansible_distribution }}.yml"
+  when:
+    - action is defined
+    - action in file_to_include
+    -
 - name: Change Docker service status to "{{ state }}"
   service:
     name: docker
