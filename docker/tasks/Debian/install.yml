@@ -4,7 +4,7 @@
 - name: Install some packages
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     force_apt_get: yes
   loop: "{{ packages }}"
   when: packages is defined
@@ -31,7 +31,7 @@
 - name: Install Docker
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     force_apt_get: yes
   loop: "{{ docker_packages }}"
 
