@@ -34,3 +34,16 @@
     state: latest
     force_apt_get: yes
   loop: "{{ docker_packages }}"
+
+- name: Add docker group into system
+  group:
+    name: docker
+    state: present
+  when: user_docker is defined
+
+- name: Allow "{{ user_docker }}" to use Docker
+  user:
+    name: "{{ user_docker }}"
+    groups: docker
+    append: yes
+    when: user_docker is defined
