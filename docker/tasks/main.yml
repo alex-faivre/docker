@@ -27,9 +27,7 @@
   service:
     name: docker
     state: "{{ state }}"
-  when:
-    - action is defined
-    - action in actions_service
+  when: state is defined
 
 - name: Change enable status on boot at "{{ enable }}"
   service:
