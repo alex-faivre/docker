@@ -17,7 +17,6 @@ All actions for docker service :
   
     - install
     - remove
-    - update
 ---
 
 All states for docker service :
@@ -30,7 +29,7 @@ All states for docker service :
 ---
 Enable state for docker at boot 
 
-  <code>action: type boolean</code>
+  <code>enable: type boolean</code>
   
     - yes
     - no
@@ -47,7 +46,7 @@ For launch this role :
 
     - hosts: all
       roles:
-         # This call will install, start and enable docker at boot
+         # This call will install, start and enable docker at boot and define user for use docker
          - { role: docker , action: install , enable: true , state: started , user_docker: < Your_user > }
 
 License

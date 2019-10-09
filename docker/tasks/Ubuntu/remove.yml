@@ -13,3 +13,9 @@
     force_apt_get: yes
     state: absent
     purge: yes
+
+- name: Change enable status on boot at False
+  service:
+    name: docker
+    enabled: "false"
+    state: started
