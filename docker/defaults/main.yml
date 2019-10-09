@@ -2,5 +2,5 @@
 # defaults file for docker
 
 action: install
-enabled: yes
+enable: yes
 state: started
