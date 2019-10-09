@@ -11,7 +11,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
   'docker-ce',
   'apt-transport-https',
   'ca-certificates',
-  'curl,
+  'curl',
   'software-properties-common'
 ])
 def test_pkg(host, pkg):
@@ -23,7 +23,7 @@ def test_pkg(host, pkg):
 @pytest.mark.parametrize('svc', [
   'docker'
 ])
-def test_svc(host, svc)
+def test_svc(host, svc):
     service = host.service(svc)
 
     assert service.is_running
