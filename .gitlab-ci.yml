@@ -7,4 +7,5 @@ stages:
 ansible-lint:
   stage: ansible-lint
   script:
-    - ansible-lint docker/tasks/main.yml
+    - ansible-lint roles/common/tasks/*.yml
+    - ansible-lint deployServerOnAWS.yml
