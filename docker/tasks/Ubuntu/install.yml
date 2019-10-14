@@ -1,26 +1,27 @@
 ---
-# tasks file for install docker on ubuntu servers
+# tasks file for docker on ubuntu servers
 
 - name: Install some packages
   apt:
     name: "{{ item }}"
-    state: present
+    state: latest
     force_apt_get: yes
-  loop: "{{ packages }}"
-  when: packages is defined
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
 
-- name: Deploy Docker's apt-key GPG
+- name: Deploy Docker's apt-key
   apt_key:
-    id:  "{{ gpg_key.id  }}"
-    url: "{{ gpg_key.url }}"
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
-  when: gpg_key is defined
 
 - name: Add docker repository
   apt_repository:
-    repo: "{{ repo.url }} {{ ansible_distribution_release }} {{ repo.status }}"
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
-  when: repo is defined
 
 - name: Update APT cache && Upgrade APT to the latest packages
   apt:
@@ -30,20 +31,6 @@
 
 - name: Install docker-ce
   apt:
-    name: "{{ item }}"
-    state: present
+    name: docker-ce
+    state: latest
     force_apt_get: yes
-  loop: "{{ docker_packages }}"
-
-- name: Add docker group into system
-  group:
-    name: docker
-    state: present
-  when: user_docker is defined
-
-- name: Allow "{{ user_docker }}" to use Docker
-  user:
-    name: "{{ user_docker }}"
-    groups: docker
-    append: yes
-  when: user_docker is defined
