@@ -30,6 +30,3 @@
     name: docker
     enable: "{{ enable }}"
   when: enable is defined
-  
-  
-  
