@@ -1,10 +1,4 @@
-before_script:
-  - ansible-lint --version
-
-stages:
-  - ansible-lint
-
-ansible-lint:
-  stage: ansible-lint
-  script:
-    - ansible-lint docker/tasks/main.yml
+include:
+  - project: 'ansible/ci/ci-ansible'
+    ref: master
+    file: lint_and_check-syntax.yml
