@@ -31,7 +31,7 @@ All states for docker service :
 ---
 Enable state for docker at boot 
 
-  <code>action: type boolean | default("yes")</code>
+  <code>enabled: type boolean | default("yes")</code>
   
     - yes
     - no
