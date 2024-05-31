@@ -49,7 +49,7 @@ For launch this role :
     - hosts: all
       roles:
          # This call will install, start and enable docker at boot
-         - { role: docker }
+         - { role: docker, trigger_action: install, enable: yes, state: started }
 
 License
 -------
